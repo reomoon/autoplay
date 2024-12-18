@@ -22,6 +22,8 @@ class HighlightPageWrapper:
     def locator(self, selector, *args, **kwargs):
         """
         locator 호출 시 자동으로 하이라이트
+        *args는 주로 인수가 여러 개일 수 있는 경우에 사용, 
+        **kwargs는 키워드 인수로 전달된 값을 받아서 유연하게 처리
         """
         locator = self._page.locator(selector, *args, **kwargs)
         self._page.evaluate("""
@@ -35,7 +37,24 @@ class HighlightPageWrapper:
             }
         }
     """, selector)
+        
+        # 요소가 DOM에 존재하는지 체크 (is_visible 대신 사용)
+        if locator.count() > 0:
+            print(f"{selector} found")
+        else:
+            print(f"{selector} not found")
         return locator
+    
+    def wait_for_element(self, selector, timeout=5000):
+        """
+        지정된 selector가 페이지에 로드될 때까지 기다립니다.
+        """
+        try:
+            self._page.wait_for_selector(selector, timeout=timeout)
+            print(f"{selector} found after waiting.")
+        except Exception as e:
+            print(f"Error: {selector} not found within {timeout} ms.")    
+            raise e
     
     def __getattr__(self, name):
         """
