@@ -45,6 +45,19 @@ class HighlightPageWrapper:
             print(f"{selector} not found")
         return locator
     
+    def click_locator(self, selector, *args, **kwargs):
+        """
+        지정된 selector로 클릭 동작을 수행하고, 하이라이트 추가
+        """
+        try:
+            locator = self.locator(selector, *args, **kwargs)  # 하이라이트 추가 후 locator 반환
+            locator.click()  # 클릭 수행
+            print(f"{selector} Clicked")
+            return locator
+        except Exception as e:
+            print(f"Error: Failed to click on {selector}. Exception: {e}")
+            raise  # 필요하면 예외를 다시 발생시켜 호출자에게 알림
+    
     def wait_for_element(self, selector, timeout=5000):
         """
         지정된 selector가 페이지에 로드될 때까지 기다립니다.
