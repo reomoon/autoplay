@@ -7,7 +7,7 @@ from Lib.common_pages import dev_openpack1_url
 def order_openpack(page):
 
     # openpack item url 이동
-    navigate_to(page, dev_openpack1_url)
+    navigate_to(page, dev_openpack1_url) # from Lib.common_utils import navigate_to 함수 호출
 
     # 1번째칸 수량 
     item_input1 = page.locator('#openPackEachSizePc00')

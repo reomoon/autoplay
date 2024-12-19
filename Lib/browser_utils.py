@@ -54,7 +54,7 @@ class HighlightPageWrapper:
 
         try:
             locator = self.locator(selector, *args, **kwargs)  # 하이라이트 추가 후 locator 반환
-            if locator.is_visible(): # 요소 존재하는지 확인
+            if locator.is_visible() and locator.count() > 0: # 요소 존재하는지 확인
                 locator.click()  # 클릭 수행
                 print(f"{selector} Clicked")
             else:
