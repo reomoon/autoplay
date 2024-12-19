@@ -2,7 +2,7 @@ from Lib.browser_utils import HighlightPageWrapper
 
 # Pages/front login
 def login(page):
-    from Lib.common_pages import LOGIN_CREDENTIALS # 함수 내부에서 임포트
+    from Lib.common_utils import LOGIN_CREDENTIALS # 함수 내부에서 임포트
 
     # 로그인 정보 가져오기 (전역 변수 LOGIN_CREDENTIALS 사용)
     def_front_username = LOGIN_CREDENTIALS["username"]
@@ -10,12 +10,11 @@ def login(page):
 
     # 로그인 요소 정의 및 동작
     page.click_locator('#onetrust-accept-btn-handler')
-
     page.click_locator('a.header_signIn')
     
-    username_input = page.click_locator('input[name="userName"]') # fill은 채우기만 해서 이벤트가 트리거가 안됨
+    username_input = page.locator('input[name="userName"]') # fill은 채우기만 해서 이벤트가 트리거가 안됨
     username_input.type(def_front_username)
-    password_input = page.click_locator('input[name="password"]')
+    password_input = page.locator('input[name="password"]')
     password_input.type(dev_front_password)
     
     page.click_locator('.signin_btn')
