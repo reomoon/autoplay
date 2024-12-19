@@ -9,6 +9,8 @@ def login_fixture():
     p, browser = lunch_browser()
     page = HighlightPageWrapper(browser.new_page())  # 래핑된 페이지 사용
     page.goto(dev_front_url)
+    # 페이지 뷰포트를 최대화 크기로 설정
+    page.set_viewport_size({"width": 1680, "height": 900})
 
     # 로그인 함수 호출
     login(page)

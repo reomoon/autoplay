@@ -1,4 +1,3 @@
-import time
 from Lib.browser_utils import HighlightPageWrapper
 
 # Pages/front login

@@ -1,0 +1,4 @@
+[
+  "tests/test_login.py::test_login",
+  "tests/test_order_openpack.py::test_order_openpack"
+]

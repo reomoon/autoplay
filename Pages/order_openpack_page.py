@@ -9,7 +9,7 @@ def order_openpack(page):
 
     # 1번째칸 수량 
     item_input1 = page.locator('#openPackEachSizePc00')
-    item_input1.fill('2')
+    item_input1.type('2')
 
     # Add To Shopping BAG 버튼 클릭
     page.click_locator('//*[@id="content"]/div/div[1]/div[2]/div[10]/span/button')
