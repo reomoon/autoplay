@@ -1,18 +1,20 @@
 import pytest
 from Lib.browser_utils import lunch_browser, close_browser, HighlightPageWrapper
 from Pages.login_page import login
+from Lib.common_pages import dev_front_url
 
-def test_login():
+@pytest.fixture(scope="module")
+def login_fixture():
     # Playwright 컨텍스트와 브라우저를 초기화
     p, browser = lunch_browser()
     page = HighlightPageWrapper(browser.new_page())  # 래핑된 페이지 사용
-    page.goto('https://dev-www.fashiongo.net')
+    page.goto(dev_front_url)
 
     # 로그인 함수 호출
     login(page)
 
     # 로그인 후 URL 검증
-    expected_url = 'https://dev-www.fashiongo.net/login?returnUrl=%2F'
+    expected_url = 'https://dev-www.fashiongo.net/'
     
     # assert를 사용하여 성공 시 메시지 출력
     assert page.url == expected_url, f"Fail: Expected URL {expected_url}, but got {page.url}."
@@ -20,5 +22,5 @@ def test_login():
     # 성공적으로 통과하면 출력
     print("Success: Login successful, URL matches expected.")
 
-    # Playwright 컨텍스트와 브라우저 닫기
-    # close_browser(p, browser)
+    yield page #로그인된 페이지를 반환    
+    close_browser(p, browser) # Playwright 컨텍스트와 브라우저 닫기

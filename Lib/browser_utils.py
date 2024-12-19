@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright
 
-# Lib/env 크롬 브라우저 런처
+# Lib/browser_util.py 크롬 브라우저 런처
 
 def lunch_browser():
     # Playwright 컨텍스트를 반환
@@ -57,17 +57,19 @@ class HighlightPageWrapper:
         except Exception as e:
             print(f"Error: Failed to click on {selector}. Exception: {e}")
             raise  # 필요하면 예외를 다시 발생시켜 호출자에게 알림
+
+    def wait_for_load_state(self, *args, **kwargs):
+        """
+        페이지의 로딩 상태가 완료될 때까지 기다립니다.
+        """
+        return self._page.wait_for_load_state(*args, **kwargs)
     
     def wait_for_element(self, selector, timeout=5000):
         """
         지정된 selector가 페이지에 로드될 때까지 기다립니다.
         """
-        try:
-            self._page.wait_for_selector(selector, timeout=timeout)
-            print(f"{selector} found after waiting.")
-        except Exception as e:
-            print(f"Error: {selector} not found within {timeout} ms.")    
-            raise e
+        self._page.wait_for_selector(selector, timeout=timeout)
+        return self._page.locator(selector)
     
     def __getattr__(self, name):
         """
