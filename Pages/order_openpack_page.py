@@ -17,11 +17,11 @@ def order_openpack(page):
     # Add To Shopping BAG 버튼 클릭
     page.click_locator('.btn.btn_black_v01.addCart.nclick')
 
-    # 헤더 /cart 아이콘 클릭
-    page.click_locator('#miniCount')
-
     # Cart 안담기는 문제가 있어 3초 대기
     page.wait_for_timeout(3000)
+
+    # 헤더 /cart 아이콘 클릭
+    page.click_locator('#miniCount')
 
     # checkout_process 호출
     checkout_process(page)

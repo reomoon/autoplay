@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 def lunch_browser():
     # Playwright 컨텍스트를 반환
     p = sync_playwright().start()
-    browser = p.chromium.launch(headless = False, args = ["--kiosk"]) # headless 여부
+    browser = p.chromium.launch(headless = True, args = ["--kiosk"]) # headless 여부
     return p, browser
 
 def close_browser(p, browser): # browser 객체가 위에 외부로 있기 떄문에 close 내부 객체를 전달
