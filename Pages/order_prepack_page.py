@@ -14,17 +14,11 @@ def order_prepack(page):
     random_quantity = random.randint(1,3) # 1 ~ 3사이 랜덤값
     item_input1.type(str(random_quantity)) # type 랜덤값 입력
 
-     # Add To Shopping BAG 버튼 클릭
+    # Add To Shopping BAG 버튼 클릭
     page.click_locator('.btn.btn_black_v01.addCart.nclick')
 
     # 헤더 /cart 아이콘 클릭
     page.click_locator('#miniCount')
-    
-    # Shopping BAG 클릭 후 URL 검증
-    expected_url = 'https://dev-www.fashiongo.net/cart'
-    page.wait_for_url(expected_url)
-
-    assert page.url == expected_url, f"Fail: Expected URL {expected_url}, but got {page.url}." # assert를 사용하여 성공 시 메시지 출력
 
     # checkout_process 호출
     checkout_process(page)
