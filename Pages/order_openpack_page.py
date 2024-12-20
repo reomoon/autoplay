@@ -20,5 +20,8 @@ def order_openpack(page):
     # 헤더 /cart 아이콘 클릭
     page.click_locator('#miniCount')
 
+    # Cart 안담기는 문제가 있어 3초 대기
+    page.wait_for_timeout(3000)
+
     # checkout_process 호출
     checkout_process(page)

@@ -27,7 +27,7 @@ def checkout_process(page):
     page.wait_for_url(expected_url)
 
     assert page.url == expected_url, f"Fail: Expected URL {expected_url}, but got {page.url}." # assert를 사용하여 실패 시 메시지 출력
-    print(f"Success: URL {expected_url} matched the expected value!")
+    print(f"Success: {expected_url} matched the expected value!")
 
     # Cart > Proceed To Checkout 버튼 클릭
     page.click_locator('.btn-dark_grey.btn-checkoutAll.nclick')
