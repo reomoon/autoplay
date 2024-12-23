@@ -1,5 +1,6 @@
 # url
 dev_front_url = 'https://dev-www.fashiongo.net'
+dev_va_url = 'https://dev-vendoradmin.fashiongo.net/'
 
 # Item
 ## Dev Openpack

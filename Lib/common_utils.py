@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from Pages.login_page import login
+from Pages.FR_Pages.login_page import login
 
 # .env 파일 로드
 load_dotenv()
@@ -9,6 +9,8 @@ load_dotenv()
 LOGIN_CREDENTIALS = {
     "username": os.getenv("dev_front_username"),
     "password": os.getenv("dev_front_password"),
+    "va_username" : os.getenv("dev_va_username"),
+    "va_password" : os.getenv("dev_va_password"),
 }
 
 def navigate_to(page, url):
