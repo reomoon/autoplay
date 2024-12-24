@@ -16,7 +16,7 @@ def login_fixture():
     va_login(page)
 
     # 로그인 후 URL 검증
-    expected_url = 'https://dev-vendoradmin.fashiongo.net/'
+    expected_url = 'https://dev-vendoradmin.fashiongo.net/#/home'
     
     # assert를 사용하여 성공 시 메시지 출력
     assert page.url == expected_url, f"Fail: Expected URL {expected_url}, but got {page.url}."

@@ -1,16 +1,24 @@
-from playwright.sync_api import sync_playwright
+from playwright.async_api import async_playwright
+import asyncio
 
 # Lib/browser_util.py 크롬 브라우저 런처
 
-def lunch_browser():
+async def lunch_browser():
     # Playwright 컨텍스트를 반환
-    p = sync_playwright().start()
-    browser = p.chromium.launch(headless = False, args = ["--kiosk"]) # headless 여부
+    async with async_playwright() as p:
+        browser = await p.chromium.lunch(headless = False, args = ["--kiosk"]) # headless 여부
     return p, browser
 
-def close_browser(p, browser): # browser 객체가 위에 외부로 있기 떄문에 close 내부 객체를 전달
-    browser.close() # 전달된 브라우저 객체를 닫음
-    p.stop()
+async def close_browser(p, browser): 
+    await browser.close()  # 비동기적으로 브라우저 종료
+    await p.stop()  # 비동기적으로 Playwright 종료
+
+async def main():
+    p, browser = await lunch_browser()
+    # 여기에 추가 작업을 수행할 수 있음
+    await close_browser(p, browser)  # 비동기적으로 브라우저 종료
+
+asyncio.run(main())
 
 class HighlightPageWrapper:
     """

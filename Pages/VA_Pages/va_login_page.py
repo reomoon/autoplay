@@ -10,21 +10,33 @@ def va_login(page):
 
     # 로그인 요소 정의 및 동작
     username_input = page.locator('input[formcontrolname="userName"]')
-    username_input.type(dev_va_username)
+    page.wait_for_timeout(1000)
+    username_input.type(dev_va_username, delay = 100) # 키 입력 시 100ms 지연
+
     password_input = page.locator('input[formcontrolname="password"]')
-    password_input.type(dev_va_password)
+    page.wait_for_timeout(1000)
+    password_input.type(dev_va_password, delay = 100)
 
     # SECURE LOGIN
     page.click_locator('.btn.btn-blue.width-100p.btn-login')
 
-    # FG Free Shipping 팝업 x버튼
-    page.click_locator('i.modal-close-btn')
-
-    # FG Free Shipping 팝업2 x버튼
-    page.click_locator('i.modal-close-btn')
-
-    # 또는 특정 URL을 기다릴 수도 있습니다
-    page.wait_for_url('https://dev-vendoradmin.fashiongo.net/#/home/')
+    # 3초간 대기
+    page.wait_for_timeout(3000)
 
     # 로딩 상태가 완료될 때까지 기다림
     # page.wait_for_load_state()
+
+    # 또는 특정 URL을 기다릴 수도 있습니다
+    # page.wait_for_url('https://dev-vendoradmin.fashiongo.net/#/home/')
+
+    # FG Free Shipping 팝업 x버튼
+    FreeShipping_popup = page.locator('.modal-dialog .modal-close-btn')
+    FreeShipping_popup.click().nth(0)
+    FreeShipping_popup3 = page.locator('.modal-dialog.w-900').locator('i.modal-close-btn')
+    FreeShipping_popup3.click()
+    
+
+
+    
+
+    
