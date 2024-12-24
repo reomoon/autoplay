@@ -7,10 +7,10 @@ load_dotenv()
 
 # 공통 환경 변수(전역 변수로 정의)
 LOGIN_CREDENTIALS = {
-    "username": os.getenv("dev_front_username"),
-    "password": os.getenv("dev_front_password"),
-    "va_username" : os.getenv("dev_va_username"),
-    "va_password" : os.getenv("dev_va_password"),
+    "fr_username": os.getenv("Dev_fr_username"),
+    "fr_password": os.getenv("Dev_fr_password"),
+    "va_username" : os.getenv("Dev_va_username"),
+    "va_password" : os.getenv("Dev_va_password"),
 }
 
 def navigate_to(page, url):

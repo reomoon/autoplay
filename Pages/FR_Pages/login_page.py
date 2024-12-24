@@ -5,8 +5,8 @@ def login(page):
     from Lib.common_utils import LOGIN_CREDENTIALS # 함수 내부에서 임포트
 
     # 로그인 정보 가져오기 (전역 변수 LOGIN_CREDENTIALS 사용)
-    def_front_username = LOGIN_CREDENTIALS["username"]
-    dev_front_password = LOGIN_CREDENTIALS["password"]
+    def_front_username = LOGIN_CREDENTIALS["fr_username"] # common_utils.py "fr_username": os.getenv("Dev_fr_username") 참조
+    dev_front_password = LOGIN_CREDENTIALS["fr_password"] # common_utils.py "fr_password": os.getenv("Dev_fr_password") 참조
 
     # 로그인 요소 정의 및 동작
     page.click_locator('#onetrust-accept-btn-handler')
