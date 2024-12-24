@@ -14,9 +14,9 @@ async def login(page):
     await page.click_locator('a.header_signIn')
     
     username_input = await page.locator('input[name="userName"]') # fill은 채우기만 해서 이벤트가 트리거가 안됨
-    username_input.type(def_front_username)
+    await username_input.type(def_front_username)
     password_input = await page.locator('input[name="password"]')
-    password_input.type(dev_front_password)
+    await password_input.type(dev_front_password)
     
     await page.click_locator('.signin_btn')
 

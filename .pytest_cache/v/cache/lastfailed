@@ -2,8 +2,7 @@
   "tests/test_login.py::test_login": true,
   "tests/test_order_openpack.py::test_order_openpack": true,
   "tests/VA_tests/test_va_order_list.py::test_va_login": true,
-  "tests/FR_tests/test_login.py": true,
-  "tests/FR_tests/test_orders.py": true,
-  "tests/VA_tests/test_va_login.py": true,
-  "tests/VA_tests/test_va_order_list.py": true
+  "tests/FR_tests/test_orders.py::test_order_prepack": true,
+  "tests/FR_tests/test_orders.py::test_order_promotion": true,
+  "tests/FR_tests/test_orders.py::test_order_openpack": true
 }
