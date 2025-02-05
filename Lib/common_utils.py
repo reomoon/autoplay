@@ -13,13 +13,6 @@ LOGIN_CREDENTIALS = {
     "va_password" : os.getenv("Dev_va_password"),
 }
 
-def navigate_to(page, url):
-    """
-    지정된 URL로 페이지를 이동하는 함수
-    """
-    page.goto(url)
-    print(f"Navigated to {url}")
-
 def checkout_process(page):
     """
     Cart 부터 시작

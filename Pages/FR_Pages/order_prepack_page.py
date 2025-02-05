@@ -7,7 +7,7 @@ from Lib.common_pages import dev_prepack1_url
 def order_prepack(page):
 
     # openpack item url 이동
-    navigate_to(page, dev_prepack1_url)
+    page.goto(dev_prepack1_url)
 
     # 1번째칸 수량 
     item_input1 = page.locator('#txtPkQty0')
